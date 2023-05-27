@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать регион</title>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/regions/{id}(id=${region.getRegionId()})}" th:object="${region}">
+    <label for="regionName">Введите название региона: </label>
+    <input type="text" th:field="*{regionName}" id="regionName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('regionName')}" th:errors="*{regionName}">Full Name Error</div>
+    <br/>
+    <input type="submit" value="Редактировать"/>
+</form>
+
+</body>
+</html>

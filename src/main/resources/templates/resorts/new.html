@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>New resort</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/resorts}" th:object="${resort}">
+    <label for="regionId">Введите ID региона: </label>
+    <input type="text" th:field="*{regionId}" id="regionId"/>
+    <div style="color:red" th:if="${#fields.hasErrors('regionId')}" th:errors="*{regionId}">Region ID Error</div>
+    <br/>
+
+    <label for="resortName">Введите название курорта: </label>
+    <input type="text" th:field="*{resortName}" id="resortName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('resortName')}" th:errors="*{resortName}">Resort Name Error</div>
+    <br/>
+
+    <label for="resortTelephone">Введите номер телефона: </label>
+    <input type="text" th:field="*{resortTelephone}" id="resortTelephone"/>
+    <div style="color:red" th:if="${#fields.hasErrors('resortTelephone')}" th:errors="*{resortTelephone}">Resort Telephone Error</div>
+    <br/>
+
+    <label for="resortWebSite">Введите веб-сайт: </label>
+    <input type="text" th:field="*{resortWebSite}" id="resortWebSite"/>
+    <div style="color:red" th:if="${#fields.hasErrors('resortWebSite')}" th:errors="*{resortWebSite}">Resort Web Site Error</div>
+    <br/>
+
+    <label for="weatherRegion">Введите регион погоды: </label>
+    <input type="text" th:field="*{weatherRegion}" id="weatherRegion"/>
+    <div style="color:red" th:if="${#fields.hasErrors('weatherRegion')}" th:errors="*{weatherRegion}">Weather Region Error</div>
+    <br/>
+
+    <label for="resortDescription">Введите описание курорта: </label>
+    <input type="text" th:field="*{resortDescription}" id="resortDescription"/>
+    <div style="color:red" th:if="${#fields.hasErrors('resortDescription')}" th:errors="*{resortDescription}">Resort Description Error</div>
+    <br/>
+
+    <input type="submit" value="Создать"/>
+</form>
+
+</body>
+</html>

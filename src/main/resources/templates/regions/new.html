@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>New region</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/regions}" th:object="${region}">
+    <label for="regionName">Введите название региона: </label>
+    <input type="text" th:field="*{regionName}" id="regionName"/>
+    <div style="color:red" th:if="${#fields.hasErrors('regionName')}" th:errors="*{regionName}">Region Name Error</div>
+    <br/>
+
+    <input type="submit" value="Создать!"/>
+</form>
+
+</body>
+</html>

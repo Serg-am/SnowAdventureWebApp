@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${resort.getResortId() + ', ' + resort.getRegionId() + ', ' + resort.getResortName() + ', ' + resort.getResortTelephone() + ', ' + resort.getResortWebSite() + ', ' + resort.getWeatherRegion() + ', ' + resort.getResortDescription()}">VALUE</p>
+
+<form th:method="GET" th:action="@{/resorts/{id}/edit(id=${resort.getResortId()})}">
+    <input type="submit" value="Редактировать"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/resorts/{id}(id=${resort.getResortId()})}">
+    <input type="submit" value="Удалить"/>
+</form>
+
+</body>
+</html>

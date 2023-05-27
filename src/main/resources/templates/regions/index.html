@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="region : ${regions}">
+    <a th:href="@{/regions/{id}(id=${region.getRegionId()})}"
+       th:text="${region.getRegionId() + ', ' + region.getRegionName()}">region</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/regions/new">Добавить Регион</a>
+
+</body>
+</html>

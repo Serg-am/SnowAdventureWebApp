@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Show</title>
+</head>
+<body>
+<p th:text="${region.getRegionName() + ', ' + region.getRegionId()}">VALUE</p>
+
+<div th:if="${!resorts.isEmpty()}">
+    <hr/>
+    <b>Горнолыжные курорты:</b>
+    <br/>
+    <table th:each="resort : ${resorts}">
+        <tr>
+            <td>
+                <span th:text="${resort.getResortName() + ', ' + resort.getResortTelephone() + ', ' + resort.getWeatherRegion()}"
+                      th:style="'color: black'">
+                    resort
+                </span>
+            </td>
+        </tr>
+    </table>
+    <hr/>
+</div>
+
+<form th:method="GET" th:action="@{/regions/{id}/edit(id=${region.getRegionId()})}">
+    <input type="submit" value="Редактировать"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/regions/{id}(id=${region.getRegionId()})}">
+    <input type="submit" value="Удалить"/>
+</form>
+
+</body>
+</html>
