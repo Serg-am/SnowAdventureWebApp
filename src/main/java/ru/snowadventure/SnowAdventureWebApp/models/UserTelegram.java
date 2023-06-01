@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "users_data_table")
-public class User {
+public class UserTelegram {
     @Id
     @Column(name = "chat_id")
     private int resortId;
