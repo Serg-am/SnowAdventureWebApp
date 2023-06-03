@@ -5,20 +5,23 @@
     <title>Index</title>
 </head>
 <body>
-<center><b>AdminPanel</b></center>
-<p>Панель администратора для добавления данных в базу данных</p>
+<center><b>Snow-Adventure.ru</b></center>
+<p>Для того что бы зайти в админ панель, нужно зарегистрироваться и быть администратором</p>
 
-<form th:method="GET" th:action="@{/regions}">
-  <input type="submit" value="Раздел 'Регион'"/>
+<form th:method="GET" th:action="@{/auth/login}">
+    <input type="submit" value="Sign in"/>
 </form>
 <br>
-<form th:method="GET" th:action="@{/resorts}">
-  <input type="submit" value="Раздел 'Горнолыжный курорт'"/>
+<form th:method="GET" th:action="@{/auth/registration}">
+    <input type="submit" value="Registration"/>
 </form>
+<br>
 
-<form th:action="@{/logout}" th:method="POST">
-    <input type="submit" value="Logout" />
+<form th:method="GET" th:action="@{/adminPanel}">
+    <input type="submit" value="Admin Panel"/>
 </form>
+<br>
+
 
 </body>
 </html>
