@@ -26,7 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 //.antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/auth/login", "/auth/registration", "/error", "/").permitAll()
+                .antMatchers("/auth/login", "/auth/registration", "/error", "/", "/404", "/index", "/about", "/contact", "/post").permitAll()
+                .antMatchers("/css/**", "/fonts/**", "/img/**", "/js/**").permitAll()
                 .anyRequest().hasAnyRole("ADMIN")
                 .and()
                 .formLogin().loginPage("/auth/login")
@@ -36,7 +37,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/auth/login");
+                .logoutSuccessUrl("/auth/login")
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/404"); //TODO Разобраться почему не работает
     }
 
     @Override

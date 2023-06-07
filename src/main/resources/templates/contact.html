@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -34,49 +34,47 @@
         </div>
     </nav>
     <header class="masthead" style="background-image: url('/img/contact-bg.jpg');">
-        <div class="overlay"></div>
+        <div class="overlay" style="height: 532px;"></div>
         <div class="container">
-            <div class="row">
+            <div class="row" style="height: 532px;">
                 <div class="col-md-10 col-lg-8 mx-auto position-relative">
-                    <div class="site-heading" style="height: 880.125px;">
-                        <div class="row mb-5" style="height: 0.1406px;">
-                            <div class="col-md-8 col-xl-6 text-center mx-auto">
-                                <h2 style="margin: -129px;">Log in</h2>
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-center" style="margin: -89px;">
-                            <div class="col-md-6 col-xl-4">
-                                <div class="card mb-5">
-                                    <div class="card-body d-flex flex-column align-items-center">
-                                        <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4"><i class="fa fa-user-o"></i></div>
-                                        <form name="f" method="post" action="/process_login">
-                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                                            <div class="mb-3" /><label for="username"></label><input class="form-control" type="text" name="username" id="username" placeholder="Login">
-                                            <div class="mb-3"><label for="password"></label><input class="form-control" type="password" name="password" id="password" placeholder="Password"></div>
-                                            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Login</button></div>
-                                            <a href="/auth/registration" style="color: var(--bs-gray);">Registration</a>
-                                            <br/>
-                                            <a href="#" style="color: var(--bs-gray);margin: 11px;">Forgot your password?</a>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <section class="py-4 py-xl-5"></section>
+                    <div class="site-heading">
+                        <h1>Свяжитесь с нами</h1><span class="subheading">Есть вопросы? У нас есть ответы.</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto">
+                <p>Хотите связаться? Заполните форму ниже, чтобы отправить нам сообщение, и мы свяжемся с Вами как можно скорее!</p>
+                <form id="contactForm" name="sentMessage">
+                    <div class="control-group">
+                        <div class="form-floating controls mb-3"><input class="form-control" type="text" id="name" required="" placeholder="Name"><label class="form-label" for="name">Имя</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-floating controls mb-3"><input class="form-control" type="email" id="email" required="" placeholder="Email Address"><label class="form-label">Email</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-floating controls mb-3"><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-floating controls mb-3"><textarea class="form-control" id="message" data-validation-required-message="Please enter a message." required="" placeholder="Message" style="height: 150px;"></textarea><label class="form-label">Сообщение</label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <div id="success"></div>
+                    <div class="mb-3"><button class="btn btn-primary" id="sendMessageButton" type="submit">Send</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
     <hr>
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-lg-8 mx-auto">
                     <ul class="list-inline text-center">
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"></span></li>
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-telegram fa-stack-1x fa-inverse"></i></span></li>
-                        <li class="list-inline-item"><span class="fa-stack fa-lg"></span></li>
+                        <li class="nav-item"><a class="nav-link" href="https://t.me/SnowAdventureBot"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-telegram fa-stack-1x fa-inverse"></i></span></a><li>
                     </ul>
                     <p class="text-muted copyright">Snow-Adventure ©&nbsp;Brand 2023</p>
                 </div>

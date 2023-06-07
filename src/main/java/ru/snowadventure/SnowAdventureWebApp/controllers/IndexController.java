@@ -13,8 +13,28 @@ public class IndexController {
         return "index";
     }
 
-    @GetMapping("/adminPanel")
+    @GetMapping("/index")
+    public String indexI() {
+        return "index";
+    }
+
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String contact() {
+        return "contact";
+    }
+
+    @GetMapping("/post")
+    public String post() {
+        return "post";
+    }
+
+    @GetMapping("/admin-panel")
     public String adminPanel(){
-        return "adminPanel";
+        return "admin-panel";
     }
 }

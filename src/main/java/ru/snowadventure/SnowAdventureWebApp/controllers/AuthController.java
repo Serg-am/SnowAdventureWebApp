@@ -42,7 +42,7 @@ public class AuthController {
         userWebAppValidator.validate(userWebApp, bindingResult);
 
         if(bindingResult.hasErrors())
-            return "/auth/registration";
+            return "auth/registration";
 
         registrationService.register(userWebApp);
 
