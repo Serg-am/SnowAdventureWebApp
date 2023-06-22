@@ -28,10 +28,6 @@ public class IndexController {
         return "contact";
     }
 
-    @GetMapping("/post")
-    public String post() {
-        return "post";
-    }
 
     @GetMapping("/admin-panel")
     public String adminPanel(){
