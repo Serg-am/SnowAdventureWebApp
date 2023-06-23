@@ -37,11 +37,15 @@ public class PostController {
                               @RequestParam("page") Optional<Integer> page,
                               @RequestParam("size") Optional<Integer> size) {
         int currentPage = page.orElse(1);
-        int pageSize = size.orElse(6);
+        int pageSize = size.orElse(2);
+
 
         Page<Resort> resortPage = resortService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("resortPage", resortPage);
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("pageSize", pageSize);
+        //model.addAttribute("page", page);
 
         int totalPages = resortPage.getTotalPages();
         if (totalPages > 0) {

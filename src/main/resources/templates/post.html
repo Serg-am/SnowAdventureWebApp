@@ -55,24 +55,49 @@
                 <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 250px;" src="/img/post-snowboard.jpg">
                     <div class="card-body p-4">
                         <h4 class="card-title" th:text="${resort.getResortName}" />
-                        <p class="card-text" th:text="${resort.getResortDescription()}" />
+                        <p class="card-text" th:text="${resort.getResortDescription()}" th:maxlength="10" />
                         <a class="text-primary card-text mb-0" th:text="${resort.getResortWebSite()}" th:href="${resort.getResortWebSite()}"/>
                     </div>
                 </div>
             </div>
         </div>
+        <br>
         <div id="pagination" class="d-flex justify-content-center">
-            <a class="pagination-item disabled" href="#">
-                <img src="/img/icon_arrow-left.svg">
-                <span>Previos</span></a>
-            <a class="pagination-item active"
-               th:if="${resortPage.totalPages > 0}"
-               th:each="pageNumber : ${pageNumbers}"
-               th:href="@{/post(size=${resortPage.size}, page=${pageNumber})}"
-               th:text="${pageNumber}" />
-            <a class="pagination-item" href="#">
-                <span>Next</span>
-                <img src="/img/icon_arrow-right.svg"></a>
+            <nav aria-label="Pagination" th:if="${resortPage.totalPages > 0}">
+                <ul class="pagination justify-content-center">
+                    <li class="pagination-item enabled" th:classappend="${currentPage == 1} ? 'disabled'">
+                        <a th:href="@{/post(size=${pageSize}, page=${1})}">
+                            <span>First</span>
+                        </a>
+                    </li>
+                    <li class="pagination-item enabled" th:classappend="${currentPage == 1} ? 'disabled'">
+                        <a th:href="@{/post(size=${pageSize}, page=${currentPage - 1})}">
+                            <img src="/img/icon_arrow-left.svg">
+                        </a>
+                    </li>
+                    <li class="pagination-item disabled" th:if="${currentPage - 2 > 1}">
+                        <a class="page-link" href="#">...</a>
+                    </li>
+                    <li class="pagination-item" th:classappend="${page == currentPage} ? 'active'"
+                        th:each="page : ${#numbers.sequence((currentPage > 2 ? currentPage - 2 : 1), (currentPage + 2 < resortPage.totalPages ? currentPage + 2 : resortPage.totalPages))}">
+                        <a th:href="@{/post(size=${pageSize}, page=${page})}"
+                           th:text="${page}"></a>
+                    </li>
+                    <li class="pagination-item disabled" th:if="${currentPage + 2 < resortPage.totalPages}">
+                        <a class="page-link" href="#">...</a>
+                    </li>
+                    <li class="pagination-item enabled" th:classappend="${currentPage == resortPage.totalPages} ? 'disabled'">
+                        <a th:href="@{/post(size=${pageSize}, page=${currentPage + 1})}">
+                            <img src="/img/icon_arrow-right.svg">
+                        </a>
+                    </li>
+                    <li class="pagination-item" th:classappend="${currentPage == resortPage.totalPages} ? 'disabled'">
+                        <a th:href="@{/post(size=${pageSize}, page=${resortPage.totalPages})}">
+                            <span>Last</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </footer>
     <hr>

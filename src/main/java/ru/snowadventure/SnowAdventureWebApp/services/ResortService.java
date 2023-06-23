@@ -34,7 +34,7 @@ public class ResortService {
             list = resorts.subList(startItem, toIndex);
         }
 
-        Page<Resort> resortPage = new PageImpl<Resort>(list, PageRequest.of(currentPage, pageSize), resorts.size());
+        Page<Resort> resortPage = new PageImpl<>(list, PageRequest.of(currentPage, pageSize), resorts.size());
 
         return resortPage;
     }
