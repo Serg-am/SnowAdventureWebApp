@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="/css/Gamanet_Pagination_bs5.css">
 </head>
 
 <body>
@@ -48,15 +49,30 @@
     </header>
     <footer>
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-            <div class="col"  th:each="resort : ${resorts}">
+            <div class="col"  th:each="resort, iStat : ${resortPage.content}"
+            th:style="${iStat.odd}? 'font-weight: bold;'"
+            th:alt-title="${iStat.even}? 'even' : 'odd'">
                 <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 250px;" src="/img/post-snowboard.jpg">
                     <div class="card-body p-4">
-                        <h4 class="card-title" th:text="${resort.getResortName()}" />
+                        <h4 class="card-title" th:text="${resort.getResortName}" />
                         <p class="card-text" th:text="${resort.getResortDescription()}" />
                         <a class="text-primary card-text mb-0" th:text="${resort.getResortWebSite()}" th:href="${resort.getResortWebSite()}"/>
                     </div>
                 </div>
             </div>
+        </div>
+        <div id="pagination" class="d-flex justify-content-center">
+            <a class="pagination-item disabled" href="#">
+                <img src="/img/icon_arrow-left.svg">
+                <span>Previos</span></a>
+            <a class="pagination-item active"
+               th:if="${resortPage.totalPages > 0}"
+               th:each="pageNumber : ${pageNumbers}"
+               th:href="@{/post(size=${resortPage.size}, page=${pageNumber})}"
+               th:text="${pageNumber}" />
+            <a class="pagination-item" href="#">
+                <span>Next</span>
+                <img src="/img/icon_arrow-right.svg"></a>
         </div>
     </footer>
     <hr>
