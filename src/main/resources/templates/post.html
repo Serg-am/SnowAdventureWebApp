@@ -17,6 +17,19 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="/css/Gamanet_Pagination_bs5.css">
+
+    <style>
+        .size {
+            white-space: nowrap; /* Отменяем перенос текста */
+            overflow: hidden; /* Обрезаем содержимое */
+            padding: 5px; /* Поля */
+            text-overflow: ellipsis; /* Многоточие */
+        }
+        .size:hover {
+            background: #ffffff; /* Цвет фона */
+            white-space: normal; /* Обычный перенос текста */
+        }
+    </style>
 </head>
 
 <body>
@@ -55,7 +68,7 @@
                 <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 250px;" src="/img/post-snowboard.jpg">
                     <div class="card-body p-4">
                         <h4 class="card-title" th:text="${resort.getResortName}" />
-                        <p class="card-text" th:text="${resort.getResortDescription()}" th:maxlength="10" />
+                        <p class="size" th:text="${resort.getResortDescription()}"  />
                         <a class="text-primary card-text mb-0" th:text="${resort.getResortWebSite()}" th:href="${resort.getResortWebSite()}"/>
                     </div>
                 </div>
