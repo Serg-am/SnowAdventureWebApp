@@ -6,5 +6,8 @@ import ru.snowadventure.SnowAdventureWebApp.models.UserWebApp;
 import java.util.Optional;
 
 public interface UsersRepository extends JpaRepository<UserWebApp, Integer> {
-    Optional<UserWebApp> findByUsername(String username);
+    UserWebApp findByUsername(String username);
+
+    UserWebApp findByActivationCode(String code);
+
 }

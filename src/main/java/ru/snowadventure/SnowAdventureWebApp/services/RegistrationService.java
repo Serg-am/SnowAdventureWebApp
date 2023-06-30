@@ -23,6 +23,7 @@ public class RegistrationService {
     public void register(UserWebApp userWebApp){
         userWebApp.setPassword(passwordEncoder.encode(userWebApp.getPassword()));
         userWebApp.setRole("ROLE_USER");
+        userWebApp.setActive(false);
         usersRepository.save(userWebApp);
     }
 }

@@ -18,7 +18,7 @@ public class UserWebAppDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(userWebApp.getRole()));
+        return Collections.singletonList(new SimpleGrantedAuthority(userWebApp.getRole().toString()));
     }
 
     public UserWebApp getUserWebApp() {

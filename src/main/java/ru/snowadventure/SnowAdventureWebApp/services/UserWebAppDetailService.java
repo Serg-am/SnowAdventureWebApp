@@ -22,7 +22,7 @@ public class UserWebAppDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserWebApp> userWebAppOptional = usersRepository.findByUsername(username);
+        Optional<UserWebApp> userWebAppOptional = Optional.ofNullable(usersRepository.findByUsername(username));
 
         //TODO Переделать костыль
         if(userWebAppOptional.isEmpty()){
