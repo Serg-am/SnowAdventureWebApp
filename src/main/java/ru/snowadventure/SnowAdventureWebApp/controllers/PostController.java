@@ -1,11 +1,9 @@
 package ru.snowadventure.SnowAdventureWebApp.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,7 +43,7 @@ public class PostController {
         model.addAttribute("resortPage", resortPage);
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("pageSize", pageSize);
-        //model.addAttribute("page", page);
+
 
         int totalPages = resortPage.getTotalPages();
         if (totalPages > 0) {
@@ -57,13 +55,5 @@ public class PostController {
 
         return "post";
     }
-
-
-    /*@GetMapping("/post")
-    public String post(Model model) {
-        model.addAttribute("resorts", resortDAO.index());
-        return "post";
-    }*/
-
 
 }

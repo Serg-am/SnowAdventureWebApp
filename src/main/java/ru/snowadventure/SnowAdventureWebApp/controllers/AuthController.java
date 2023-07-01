@@ -70,4 +70,5 @@ public class AuthController {
 
         return "auth/activate";
     }
+
 }

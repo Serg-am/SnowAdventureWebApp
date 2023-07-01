@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8">
@@ -28,7 +29,18 @@
                     <li class="nav-item"><a class="nav-link" href="/contact">Contact us</a></li>
                     <li class="nav-item"><a class="nav-link" href="/post">Resorts</a></li>
                     <li class="nav-item"><a class="nav-link" href="/admin-panel">Only adm</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/auth/login">Sign in</a></li>
+                    <li sec:authorize="!isAuthenticated()" class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Sign in</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" sec:authentication="name">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="nav-link" href="#">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="nav-link" th:href="@{/logout}">Logout</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -46,13 +58,12 @@
         </div>
     </header>
     <div class="container">
-        <div class="row">
             <div class="col-md-10 col-lg-8 mx-auto">
                 <p><span style="color: rgb(69, 69, 69);">Своей инфраструктурой лучшие горнолыжные курорты России способны потягаться с европейскими за топовые места в рейтингах. Большое число трасс разной сложности, новое оборудование и потрясающая природа побуждают туристов со всего мира ежегодно покорять российские склоны. Список самых популярных горнолыжных курортов России</span></p>
                 <p><span style="color: rgb(69, 69, 69);">Крупнейшими горнолыжными курортами России считаются комплексы "Роза Хутор" и "Красная Поляна" в </span><span style="color: rgb(51, 51, 51);">Сочи</span><span style="color: rgb(69, 69, 69);">, "Шерегеш" в Кемеровской области, "Большой Вудъявр" в </span><span style="color: rgb(51, 51, 51);">Мурманской области&nbsp;</span><span style="color: rgb(69, 69, 69);">и "Горный воздух" на</span><span style="color: rgb(51, 51, 51);">&nbsp;Сахалине</span><span style="color: rgb(69, 69, 69);">.&nbsp;Самыми живописными многие лыжники называют склоны на </span><span style="color: rgb(51, 51, 51);">Кавказе</span><span style="color: rgb(69, 69, 69);">, в частности, на курортах Приэльбрусья "Эльбрус" и "Чегет".</span></p>
                 <p><span style="color: rgb(69, 69, 69);">Сноуборды и </span><span style="color: rgb(51, 51, 51);">лыжи&nbsp;</span><span style="color: rgb(69, 69, 69);">не единственное развлечение в таких комплексах, каждый курорт предлагают свои дополнительные активности. Чаще всего это баня или сауна, крытые бассейны и спортивные залы, детские комнаты и клубы, ледовые катки и горки. Могут покатать и на упряжках хаски или даже оленьих.</span></p>
+                <p><span style="color: rgb(69, 69, 69);">Snow-Adventure.ru поможет Вам поближе познакомится с горнолыжными курортам</span></p>
             </div>
-        </div>
     </div>
     <hr>
     <footer>
