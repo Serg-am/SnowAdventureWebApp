@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8">
@@ -23,12 +24,24 @@
     <div class="container"><a class="navbar-brand" href="/index">Snow-Adventure</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact us</a></li>
-                <li class="nav-item"><a class="nav-link" href="/post">Blog Post</a></li>
-                <li class="nav-item"><a class="nav-link" href="/admin-panel">Only adm</a></li>
-                <li class="nav-item"><a class="nav-link" href="/auth/login">Sign in</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index">Главная</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">О нас</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Контакты</a></li>
+                <li class="nav-item"><a class="nav-link" href="/post">Курорты</a></li>
+                <li sec:authorize="!isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Войти</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
+                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" sec:authentication="name">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="nav-link" href="#">Профиль</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="nav-link" href="/admin-panel">Admin</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="nav-link" th:href="@{/logout}">Выйти</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -41,7 +54,7 @@
                 <div class="site-heading" style="height: 880.125px;">
                     <div class="row mb-5" style="height: 0.1406px;">
                         <div class="col-md-8 col-xl-6 text-center mx-auto">
-                            <h2 style="margin: -129px;">Registration</h2>
+                            <h2 style="margin: -129px;">Регистрация</h2>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center" style="margin: -89px;">
@@ -55,7 +68,7 @@
                                             <div class="mb-3">
                                                 <label for="password"></label><input class="form-control" type="password" th:field="*{password}" id="password" placeholder="Password" />
                                                 <div class="mb-3"></div>
-                                                <button class="btn btn-primary d-block w-100" type="submit">Registration</button>
+                                                <button class="btn btn-primary d-block w-100" type="submit">Регистрация</button>
                                             </div>
                                         </div>
                                     </form>

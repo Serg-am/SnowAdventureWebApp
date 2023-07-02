@@ -38,21 +38,22 @@
         <div class="container"><a class="navbar-brand" href="/index">Snow-Adventure</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/index">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/post">Resorts</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/admin-panel">Only adm</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/index">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/post">Курорты</a></li>
                     <li sec:authorize="!isAuthenticated()" class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Sign in</a>
+                        <a class="nav-link" th:href="@{/login}">Войти</a>
                     </li>
                     <li sec:authorize="isAuthenticated()" class="nav-item dropdown">
                         <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#" sec:authentication="name">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="#">Профиль</a>
                             <div class="dropdown-divider"></div>
-                            <a class="nav-link" th:href="@{/logout}">Logout</a>
+                            <a class="nav-link" href="/admin-panel">Admin</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="nav-link" th:href="@{/logout}">Выйти</a>
                         </div>
                     </li>
                 </ul>
