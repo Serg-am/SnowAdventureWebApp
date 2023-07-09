@@ -27,12 +27,12 @@ public class Resort {
 
     @Column(name = "resort_telephone")
     @NotEmpty(message = "Telephone should not be empty")
-    @Size(min = 6, max = 17, message = "Telephone should be between 6 and 17 characters")
+    @Size(min = 3, max = 17, message = "Telephone should be between 3 and 17 characters")
     private String resortTelephone;
 
     @Column(name = "resort_web_site")
     @NotEmpty(message = "Web site should not be empty")
-    @Size(min = 7, max = 100, message = "Web site be between 7 and 100 characters and http://....")
+    @Size(min = 3, max = 100, message = "Web site be between 3 and 100 characters and http://....")
     private String resortWebSite;
 
     @Column(name = "weather_region")

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>About us - Snow-Adventure.ru</title>
+    <title>Regions - Snow-Adventure.ru</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/Lora.css">
     <link rel="stylesheet" href="/css/Open%20Sans.css">
@@ -17,6 +17,20 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="/css/Gamanet_Pagination_bs5.css">
+
+    <style>
+        .size {
+            white-space: nowrap; /* Отменяем перенос текста */
+            overflow: hidden; /* Обрезаем содержимое */
+            padding: 5px; /* Поля */
+            text-overflow: ellipsis; /* Многоточие */
+        }
+        .size:hover {
+            background: #ffffff; /* Цвет фона */
+            white-space: normal; /* Обычный перенос текста */
+        }
+    </style>
 </head>
 
 <body>
@@ -46,26 +60,72 @@
             </div>
         </div>
     </nav>
-    <header class="masthead" style="background-image: url('/img/about-bg.jpg');">
-        <div class="overlay"></div>
+    <header class="masthead" style="background-image: url('/img/post-bg.jpg');">
+        <div class="overlay" style="height: 532px;"></div>
         <div class="container">
-            <div class="row">
+            <div class="row" style="height: 532px;">
                 <div class="col-md-10 col-lg-8 mx-auto position-relative">
-                    <div class="site-heading" style="height: 532px;">
-                        <h1>О Нас</h1><span class="subheading">вот что мы делаем</span>
+                    <div class="post-heading">
+                        <h1>Горнолыжные курорты</h1>
+                        <h2 class="subheading">для начинающих и профессионалов</h2>
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    <div class="container">
-            <div class="col-md-10 col-lg-8 mx-auto">
-                <p><span style="color: rgb(69, 69, 69);">Своей инфраструктурой лучшие горнолыжные курорты России способны потягаться с европейскими за топовые места в рейтингах. Большое число трасс разной сложности, новое оборудование и потрясающая природа побуждают туристов со всего мира ежегодно покорять российские склоны. Список самых популярных горнолыжных курортов России</span></p>
-                <p><span style="color: rgb(69, 69, 69);">Крупнейшими горнолыжными курортами России считаются комплексы "Роза Хутор" и "Красная Поляна" в </span><span style="color: rgb(51, 51, 51);">Сочи</span><span style="color: rgb(69, 69, 69);">, "Шерегеш" в Кемеровской области, "Большой Вудъявр" в </span><span style="color: rgb(51, 51, 51);">Мурманской области&nbsp;</span><span style="color: rgb(69, 69, 69);">и "Горный воздух" на</span><span style="color: rgb(51, 51, 51);">&nbsp;Сахалине</span><span style="color: rgb(69, 69, 69);">.&nbsp;Самыми живописными многие лыжники называют склоны на </span><span style="color: rgb(51, 51, 51);">Кавказе</span><span style="color: rgb(69, 69, 69);">, в частности, на курортах Приэльбрусья "Эльбрус" и "Чегет".</span></p>
-                <p><span style="color: rgb(69, 69, 69);">Сноуборды и </span><span style="color: rgb(51, 51, 51);">лыжи&nbsp;</span><span style="color: rgb(69, 69, 69);">не единственное развлечение в таких комплексах, каждый курорт предлагают свои дополнительные активности. Чаще всего это баня или сауна, крытые бассейны и спортивные залы, детские комнаты и клубы, ледовые катки и горки. Могут покатать и на упряжках хаски или даже оленьих.</span></p>
-                <p><span style="color: rgb(69, 69, 69);">Snow-Adventure.ru поможет Вам поближе познакомится с горнолыжными курортам</span></p>
+    <footer>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            <div class="col"  th:each="region, iStat : ${regionPage.content}"
+            th:style="${iStat.odd}? 'font-weight: bold;'"
+            th:alt-title="${iStat.even}? 'even' : 'odd'">
+                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 250px;" src="/img/post-snowboard.jpg">
+                    <div class="card-body p-4">
+                        <h4 class="card-title" th:text="${region.getRegionName}" />
+                        <a class="text-primary card-text mb-0" th:href="@{/post-region/{id}(id=${region.getRegionId()})}">
+                            Посмотреть курорты</a>
+                    </div>
+                </div>
             </div>
-    </div>
+        </div>
+        <br>
+        <div id="pagination" class="d-flex justify-content-center">
+            <nav aria-label="Pagination" th:if="${regionPage.totalPages > 0}">
+                <ul class="pagination justify-content-center">
+                    <li class="pagination-item enabled" th:classappend="${currentPageRegion == 1} ? 'disabled'">
+                        <a th:href="@{/post-region(size=${pageSize}, page=${1})}">
+                            <span>First</span>
+                        </a>
+                    </li>
+                    <li class="pagination-item enabled" th:classappend="${currentPageRegion == 1} ? 'disabled'">
+                        <a th:href="@{/post-region(size=${pageSize}, page=${currentPageRegion - 1})}">
+                            <img src="/img/icon_arrow-left.svg">
+                        </a>
+                    </li>
+                    <li class="pagination-item disabled" th:if="${currentPageRegion - 2 > 1}">
+                        <a class="page-link" href="#">...</a>
+                    </li>
+                    <li class="pagination-item" th:classappend="${page == currentPageRegion} ? 'active'"
+                        th:each="page : ${#numbers.sequence((currentPageRegion > 2 ? currentPageRegion - 2 : 1), (currentPageRegion + 2 < regionPage.totalPages ? currentPageRegion + 2 : regionPage.totalPages))}">
+                        <a th:href="@{/post-region(size=${pageSize}, page=${page})}"
+                           th:text="${page}"></a>
+                    </li>
+                    <li class="pagination-item disabled" th:if="${currentPageRegion + 2 < regionPage.totalPages}">
+                        <a class="page-link" href="#">...</a>
+                    </li>
+                    <li class="pagination-item enabled" th:classappend="${currentPageRegion == regionPage.totalPages} ? 'disabled'">
+                        <a th:href="@{/post-region(size=${pageSize}, page=${currentPageRegion + 1})}">
+                            <img src="/img/icon_arrow-right.svg">
+                        </a>
+                    </li>
+                    <li class="pagination-item" th:classappend="${currentPageRegion == regionPage.totalPages} ? 'disabled'">
+                        <a th:href="@{/post-region(size=${pageSize}, page=${regionPage.totalPages})}">
+                            <span>Last</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
     <hr>
     <footer>
         <div class="container">
@@ -79,6 +139,7 @@
             </div>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
