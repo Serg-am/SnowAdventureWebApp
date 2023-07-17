@@ -93,7 +93,7 @@
                 <ul class="pagination justify-content-center">
                     <li class="pagination-item enabled" th:classappend="${currentPageRegion == 1} ? 'disabled'">
                         <a th:href="@{/post-region(size=${pageSize}, page=${1})}">
-                            <span>First</span>
+                            <span>Начало</span>
                         </a>
                     </li>
                     <li class="pagination-item enabled" th:classappend="${currentPageRegion == 1} ? 'disabled'">
@@ -119,7 +119,7 @@
                     </li>
                     <li class="pagination-item" th:classappend="${currentPageRegion == regionPage.totalPages} ? 'disabled'">
                         <a th:href="@{/post-region(size=${pageSize}, page=${regionPage.totalPages})}">
-                            <span>Last</span>
+                            <span>Конец</span>
                         </a>
                     </li>
                 </ul>

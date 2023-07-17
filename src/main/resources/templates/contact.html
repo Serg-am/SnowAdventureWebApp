@@ -62,22 +62,35 @@
         <div class="row">
             <div class="col-md-10 col-lg-8 mx-auto">
                 <p>Хотите связаться? Заполните форму ниже, чтобы отправить нам сообщение, и мы свяжемся с Вами как можно скорее! Или можете самостоятельно написать на нашу почту <a href="mailto:info@snow-adventure.ru">info@snow-adventure.ru</a></p>
-                <form id="contactForm" name="sentMessage">
+                <form name="sentMessage" th:method="POST" th:action="@{/contact}" th:object="${contact}">
                     <div class="control-group">
-                        <div class="form-floating controls mb-3"><input class="form-control" type="text" id="name" required="" placeholder="Name"><label class="form-label" for="name">Имя</label><small class="form-text text-danger help-block"></small></div>
+                        <div class="form-floating controls mb-3">
+                            <input class="form-control" type="text" th:field="*{contactName}" id="contactName" required="" placeholder="Name">
+                            <label class="form-label" for="contactName">Имя</label>
+                            <small class="form-text text-danger help-block"></small></div>
+                        <div style="color:red" th:if="${#fields.hasErrors('contactName')}" th:errors="*{contactName}">Ошибка имени</div>
                     </div>
                     <div class="control-group">
-                        <div class="form-floating controls mb-3"><input class="form-control" type="email" id="email" required="" placeholder="Email Address"><label class="form-label">Email</label><small class="form-text text-danger help-block"></small></div>
+                        <div class="form-floating controls mb-3">
+                            <input class="form-control" type="email" id="contactEmail" required="" placeholder="Email Address" th:field="*{contactEmail}">
+                            <label class="form-label" for="contactEmail">Email</label>
+                            <small class="form-text text-danger help-block"></small></div>
+                        <div style="color:red" th:if="${#fields.hasErrors('contactEmail')}" th:errors="*{contactEmail}">Ошибка почты</div>
                     </div>
                     <div class="control-group">
                         <div class="form-floating controls mb-3"><small class="form-text text-danger help-block"></small></div>
                     </div>
                     <div class="control-group">
-                        <div class="form-floating controls mb-3"><textarea class="form-control" id="message" data-validation-required-message="Please enter a message." required="" placeholder="Message" style="height: 150px;"></textarea><label class="form-label">Сообщение</label><small class="form-text text-danger help-block"></small></div>
+                        <div class="form-floating controls mb-3">
+                            <textarea class="form-control" id="contactMessage" data-validation-required-message="Please enter a message." required="" placeholder="Message" style="height: 150px;" th:field="*{contactMessage}"></textarea>
+                            <label class="form-label" for="contactMessage">Сообщение</label>
+                            <small class="form-text text-danger help-block"></small></div>
+                        <div style="color:red" th:if="${#fields.hasErrors('contactMessage')}" th:errors="*{contactMessage}">Ошибка сообщения</div>
                     </div>
                     <div id="success"></div>
-                    <div class="mb-3"><button class="btn btn-primary" id="sendMessageButton" type="submit">Send</button></div>
+                    <div class="mb-3"><button class="btn btn-primary" id="sendMessageButton" type="submit">Отправить</button></div>
                 </form>
+
             </div>
         </div>
     </div>
