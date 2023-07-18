@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>Activate</title>
-</head>
-<body>
 
-<tr>
-  <td>
-                <span th:text="${messageType + ', ' + message}"
-                      th:style="'color: black'">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/aos.min.css">
+    <link rel="stylesheet" href="/css/animate.min.css">
+    <link rel="stylesheet" href="/css/Landing-Page---Parallax-Background---Logo-Heading-ButtonGIF.css">
+</head>
+
+<body>
+    <div>
+        <div id="box-2"><img data-aos="fade" data-aos-duration="2500" data-aos-delay="700" id="logoimage1" src="/img/Logo.png">
+            <h1 data-aos="fade" data-aos-duration="2000" data-aos-delay="1300" id="heading1">
+                <span th:text="${messageType + ', ' + message}">
                     Activate
                 </span>
-  </td>
-</tr>
-
-<br/>
-<hr/>
-
+            </h1><a href="/index"><button class="btn btn-primary" data-bss-hover-animate="pulse" id="button1" type="button"><img style="width: 20px;height: 20px;transform: rotate(270deg) translateX(2px);" src="/img/arrowwhite.gif"><span><strong>ДОМОЙ</strong></span><img style="width: 20px;height: 20px;transform: rotate(90deg) translateX(-2px);" src="/img/arrowwhite.gif"></button></a>
+        </div>
+    </div>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/aos.min.js"></script>
+    <script src="/js/bs-init.js"></script>
 </body>
+
 </html>

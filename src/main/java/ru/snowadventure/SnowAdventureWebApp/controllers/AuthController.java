@@ -61,11 +61,11 @@ public class AuthController {
         boolean isActivated = userService.activateUser(code);
 
         if (isActivated) {
-            model.addAttribute("messageType", "success");
-            model.addAttribute("message", "User successfully activated");
+            model.addAttribute("messageType", "Успех");
+            model.addAttribute("message", "Пользователь активирован!");
         } else {
-            model.addAttribute("messageType", "danger");
-            model.addAttribute("message", "Activation code is not found!");
+            model.addAttribute("messageType", "Ошибка");
+            model.addAttribute("message", "Код активации не найден!");
         }
 
         return "auth/activate";

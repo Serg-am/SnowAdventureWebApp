@@ -56,8 +56,11 @@ public class UserService implements UserDetailsService {
     private void sendMessage(UserWebApp user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Hello, %s! \n" +
-                            "Welcome to Snow-Adventure. Please, visit next link: http://%s/auth/activate/%s",
+                    "Приветствуем тебя, твой логин: %s \n" +
+                            "Добро пожаловать в Snow-Adventure.\n" +
+                            "Для активации аккаунта и подтверждения электронной почты нужно пройти по ссылке:\n" +
+                            "http://%s/auth/activate/%s\n" +
+                            "Хороших тебе покатушек!",
                     user.getUsername(),
                     hostname,
                     user.getActivationCode()
